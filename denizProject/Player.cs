@@ -1,60 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace denizProject
+﻿namespace DenizProject
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Player
     {
-        public Player(int initialHealth, int InitialMana, List<Card> InitialCards, int InitialManaSlot, int Initialid, List<Card> InitialCardsOnDeck)
+        private readonly List<Card> _cardsOnHand;
+        private readonly List<Card> _cardsOnDeck;
+        private readonly int _id;
+        private int _health;
+        private int _currentMana;
+        private int _manaSlot;
+
+        public Player(int initialHealth, int initialMana, List<Card> initialCards, int initialManaSlot, int initialid, List<Card> initialCardsOnDeck)
         {
-            if (InitialManaSlot != 0 || InitialMana != 0)
-                throw new ArgumentException("You cant initiate a Player with negative mana", "Mana Parameters");
+            if (initialManaSlot != 0 || initialMana != 0)
+                throw new ArgumentException("You cant initiate a Player with negative mana", nameof(initialMana));
             if (initialHealth != 30)
-                throw new ArgumentException("Player can't be initiated unless it has 30 hp.", "initialHealth");
-            if (Initialid != 1 && Initialid != 2)
-                throw new ArgumentException("Players should have id 1 or 2.", "Initialid");
-            if (InitialCards.Count != 3)
-                throw new ArgumentException("Don't Cheat! Every player should start with 3 cards on Hand.", "InitialCards");
+                throw new ArgumentException("Player can't be initiated unless it has 30 hp.", nameof(initialHealth));
+            if (initialid != 1 && initialid != 2)
+                throw new ArgumentException("Players should have id 1 or 2.", nameof(initialHealth));
+            if (initialCards.Count != 3)
+                throw new ArgumentException("Don't Cheat! Every player should start with 3 cards on Hand.", nameof(initialCards));
 
-            health = initialHealth;
-            currentMana = InitialMana;
-            cardsOnHand = InitialCards;
-            manaSlot = InitialManaSlot;
-            id = Initialid;
-            cardsOnDeck = InitialCardsOnDeck;
-
+            _health = initialHealth;
+            _currentMana = initialMana;
+            _cardsOnHand = initialCards;
+            _manaSlot = initialManaSlot;
+            _id = initialid;
+            _cardsOnDeck = initialCardsOnDeck;
         }
-        private int health;
-        private int currentMana;
-        private int manaSlot;
-        private List<Card> cardsOnHand;
-        private int id;
-        private List<Card> cardsOnDeck;
 
-        public int getHealth() { return this.health; }
+        public int getHealth()
+        {
+            return _health;
+        }
+
         public void setHealth(int health)
         {
             if (health <= getHealth())
-                this.health = health;
+                _health = health;
             else
-                throw new System.ArgumentException("You cant heal the hero!!", "Health");
+                throw new ArgumentException("You cant heal the hero!!", nameof(health));
         }
 
-        public int getCurrentMana() { return this.currentMana; }
-        public int setCurrentMana(int currentMana) { return this.currentMana = currentMana; }
+        public int getCurrentMana()
+        {
+            return _currentMana;
+        }
 
-        public int getId() { return this.id; }
+        public void setCurrentMana(int currentMana)
+        {
+            _currentMana = currentMana;
+        }
 
-        public int getManaSlot() { return this.manaSlot; }
+        public int getId()
+        {
+            return _id;
+        }
+
+        public int getManaSlot()
+        {
+            return _manaSlot;
+        }
+
         public void setManaSlot(int manaSlot)
         {
             if (manaSlot >= 0)
-                this.manaSlot = manaSlot;
+                _manaSlot = manaSlot;
             else
-                throw new System.ArgumentException("Parameter cannot be negative", "ManaSlot");
+                throw new ArgumentException("Parameter cannot be negative", nameof(manaSlot));
         }
 
-        public List<Card> getCardsOnHand() { return this.cardsOnHand; }
-        public List<Card> getCardsOnDeck() { return this.cardsOnDeck; }
+        public List<Card> getCardsOnHand()
+        {
+            return _cardsOnHand;
+        }
+
+        public List<Card> getCardsOnDeck()
+        {
+            return _cardsOnDeck;
+        }
     }
 }

@@ -1,8 +1,8 @@
-﻿namespace denizProject
+﻿namespace DenizProject
 {
     public class Card
     {
         //No need to create a property like 'mana'. Because every card has equal attack and mana values.
-        public int power { get; set; }
+        public int Power { get; set; }
     }
 }

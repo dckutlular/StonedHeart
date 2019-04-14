@@ -46,7 +46,7 @@
     <Compile Include="Card.cs" />
     <Compile Include="Gameplay.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="Preperation.cs" />
+    <Compile Include="Preparation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

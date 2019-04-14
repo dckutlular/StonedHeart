@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace denizProject
@@ -19,7 +16,6 @@ namespace denizProject
                 {
                     //Game starts
                     case 1:
-                        Random rnd = new Random();
                         //Initialize players with random cards from deck.
                         List<Player> players = Preperation.CreatePlayers();
                         Player player1 = players[0];
@@ -33,10 +29,10 @@ namespace denizProject
                         Console.WriteLine();
 
                         //game on
-                        while (player1.health > 0 && player2.health > 0)
+                        while (player1.getHealth() > 0 && player2.getHealth() > 0)
                         {
-                            Console.WriteLine("player1's Current Health is " + player1.health);
-                            Console.WriteLine("player2's Current Health is " + player2.health);
+                            Console.WriteLine("player1's Current Health is " + player1.getHealth());
+                            Console.WriteLine("player2's Current Health is " + player2.getHealth());
                             Console.WriteLine();
 
                             //Player selects a card, or ends turn.
@@ -56,7 +52,7 @@ namespace denizProject
                                 Gameplay.NewTurn(player);
                             }
                         }
-                        Player winner = player1.health > 0 ? player1 : player2;
+                        Player winner = player1.getHealth() > 0 ? player1 : player2;
                         userInput = Gameplay.EndGame(winner);
                         break;
                     case 2:

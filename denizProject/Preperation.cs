@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace denizProject
 {
@@ -47,7 +45,7 @@ namespace denizProject
             return players;
         }
 
-        static public int DisplayMenu()
+        public static int DisplayMenu()
         {
             Console.WriteLine("Welcome to closed beta version of StonedHeart");
             Console.WriteLine();

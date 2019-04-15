@@ -1,22 +1,16 @@
-﻿namespace DenizProject
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
+namespace DenizProject
+{
     public static class Preparation
     {
         private static List<Card> CreateInitialCards()
         {
-            List<Card> cards = new List<Card>();
             int[] cardsArr = { 0, 0, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 6, 7, 8 };
 
-            foreach (int power in cardsArr)
-            {
-                cards.Add(new Card() { Power = power });
-            }
-
-            return cards;
+            return cardsArr.Select(power => new Card {Power = power}).ToList();
         }
 
         public static List<Player> CreatePlayers()
@@ -50,22 +44,24 @@
 
         public static int DisplayMenu()
         {
-            Console.WriteLine("Welcome to closed beta version of StonedHeart");
-            Console.WriteLine();
-            Console.WriteLine("1. Start a new game");
-            Console.WriteLine("2. Exit");
-            var result = Console.ReadLine();
-            int.TryParse(result, out int selection);
-
-            // if player make a selection.
-            // if not, force player to to choose a valid option.
-            if (selection == 1 || selection == 2)
+            while (true)
             {
-                return Convert.ToInt32(selection);
-            }
+                Console.WriteLine("Welcome to closed beta version of StonedHeart");
+                Console.WriteLine();
+                Console.WriteLine("1. Start a new game");
+                Console.WriteLine("2. Exit");
+                var result = Console.ReadLine();
+                int.TryParse(result, out int selection);
 
-            Console.Clear();
-            return DisplayMenu();
+                // if player make a selection.
+                // if not, force player to to choose a valid option.
+                if (selection == 1 || selection == 2)
+                {
+                    return Convert.ToInt32(selection);
+                }
+
+                Console.Clear();
+            }
         }
     }
 }

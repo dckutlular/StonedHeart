@@ -1,8 +1,8 @@
-﻿namespace DenizProject
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+namespace DenizProject
+{
     public static class Program
     {
         public static void Main()

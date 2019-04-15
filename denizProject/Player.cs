@@ -1,8 +1,8 @@
-﻿namespace DenizProject
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+namespace DenizProject
+{
     public class Player
     {
         private readonly List<Card> _cardsOnHand;
